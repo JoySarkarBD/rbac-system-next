@@ -14,33 +14,37 @@
  * server is the authoritative gatekeeper.
  */
 
-import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus, Pencil, ShieldAlert, Ban, Shield, Search, MoreHorizontal, UserCheck } from "lucide-react";
+import { Ban, MoreHorizontal, Pencil, Plus, Search, Shield, ShieldAlert, UserCheck } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
-import {
-  Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
-} from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle,
 } from "@/components/ui/dialog";
 import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
+import { Skeleton } from "@/components/ui/skeleton";
 import {
-  apiGetUsers, apiCreateUser, apiUpdateUser, apiSuspendUser, apiBanUser,
+  Table, TableBody, TableCell, TableHead, TableHeader, TableRow,
+} from "@/components/ui/table";
+
+import { PermissionEditor } from "@/components/permission/PermissionEditor";
+import { usePermissions } from "@/hooks/usePermissions";
+import {
+  apiBanUser,
+  apiCreateUser,
+  apiGetUsers,
+  apiSuspendUser,
+  apiUpdateUser,
 } from "@/lib/api";
 import { getInitials } from "@/lib/utils";
-import { usePermissions } from "@/hooks/usePermissions";
-import { PermissionEditor } from "@/components/permission/PermissionEditor";
 import type { User } from "@/types/api";
 
 function UserStatusBadge({ user }: { user: User }) {
@@ -219,7 +223,7 @@ export default function UsersPage() {
                         <DropdownMenuTrigger className="inline-flex items-center justify-center h-8 w-8 rounded-lg hover:bg-accent transition-colors text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                             <MoreHorizontal size={15} />
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end" className="w-48">
+                        <DropdownMenuContent align="end" className="w-48 bg-white">
                           <DropdownMenuLabel>Actions</DropdownMenuLabel>
                           <DropdownMenuSeparator />
                           {canWrite && (

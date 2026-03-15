@@ -5,16 +5,16 @@
  * Shows summary stats fetched from API and a welcome message.
  */
 
-import { useQuery } from "@tanstack/react-query";
-import { Users, Shield, ScrollText, TrendingUp, ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { apiGetUsers, apiGetAuditLogs, getToken } from "@/lib/api";
-import { formatDate } from "@/lib/utils";
 import { usePermissions } from "@/hooks/usePermissions";
+import { apiGetAuditLogs, apiGetUsers, getToken } from "@/lib/api";
+import { formatDate } from "@/lib/utils";
+import { useQuery } from "@tanstack/react-query";
+import { ArrowRight, ScrollText, Shield, TrendingUp, Users } from "lucide-react";
+import Link from "next/link";
 
 export default function DashboardPage() {
   const { hasPermission } = usePermissions();
