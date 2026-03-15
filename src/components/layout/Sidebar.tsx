@@ -90,7 +90,7 @@ export function Sidebar() {
         <nav className="flex-1 overflow-y-auto py-4 px-2 space-y-1">
           {isLoading
             ? Array.from({ length: 5 }).map((_, i) => (
-                <Skeleton key={i} className="h-10 w-full rounded-lg bg-[hsl(var(--sidebar-accent))]" />
+                <Skeleton key={i} className="h-10 w-full rounded-lg bg-[#ddd]" />
               ))
             : visibleItems.map((item) => {
                 const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
